@@ -17,7 +17,7 @@ function Login() {
   };
 
   const loginUser = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,10 @@ function Login() {
           navigate("/dashboard");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        alert("Login failed");
+      });
   };
 
   return (
