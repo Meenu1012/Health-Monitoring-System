@@ -18,7 +18,7 @@ function HealthForm() {
   };
 
   const saveHealthData = () => {
-    fetch("http://localhost:5000/api/health/add", {
+    fetch(`${process.env.REACT_APP_API_URL}/...`)
       method: "POST",
       headers: {
         "Content-Type": "application/json",

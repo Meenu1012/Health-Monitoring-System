@@ -11,27 +11,30 @@ function Reports() {
   }, []);
 
   const loadPatients = () => {
-    fetch("http://localhost:5000/api/patients")
+    fetch(`${process.env.REACT_APP_API_URL}/api/patients`)
       .then((res) => res.json())
       .then((data) => setPatients(data))
       .catch((err) => console.log(err));
   };
 
   const loadHealthData = () => {
-    fetch("http://localhost:5000/api/health")
+    fetch(`${process.env.REACT_APP_API_URL}/api/health`)
       .then((res) => res.json())
       .then((data) => setHealthData(data))
       .catch((err) => console.log(err));
   };
 
   const updatePatient = () => {
-    fetch(`http://localhost:5000/api/patients/update/${editPatient._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editPatient),
-    })
+    fetch(
+      `${process.env.REACT_APP_API_URL}/api/patients/update/${editPatient._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editPatient),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         alert(data.message);
@@ -46,7 +49,7 @@ function Reports() {
       return;
     }
 
-    fetch(`http://localhost:5000/api/patients/delete/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/patients/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -59,13 +62,10 @@ function Reports() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-
       <h1>Health Reports</h1>
-
 
       {editPatient && (
         <div>
-
           <h3>Edit Patient</h3>
 
           <input
@@ -112,14 +112,10 @@ function Reports() {
           </button>
 
           <br /><br />
-
         </div>
       )}
 
-
-
       <h2>Patient Details</h2>
-
 
       <table
         border="1"
@@ -127,7 +123,6 @@ function Reports() {
         cellPadding="10"
         style={{ borderCollapse: "collapse" }}
       >
-
         <thead>
           <tr>
             <th>Name</th>
@@ -139,13 +134,9 @@ function Reports() {
           </tr>
         </thead>
 
-
         <tbody>
-
           {patients.map((patient) => (
-
             <tr key={patient._id}>
-
               <td>{patient.name}</td>
               <td>{patient.age}</td>
               <td>{patient.gender}</td>
@@ -153,7 +144,6 @@ function Reports() {
               <td>{patient.phone}</td>
 
               <td>
-
                 <button onClick={() => setEditPatient(patient)}>
                   Edit
                 </button>
@@ -163,24 +153,15 @@ function Reports() {
                 <button onClick={() => deletePatient(patient._id)}>
                   Delete
                 </button>
-
               </td>
-
             </tr>
-
           ))}
-
         </tbody>
-
       </table>
-
-
 
       <h2 style={{ marginTop: "40px" }}>
         Health Data Records
       </h2>
-
-
 
       <table
         border="1"
@@ -188,9 +169,7 @@ function Reports() {
         cellPadding="10"
         style={{ borderCollapse: "collapse" }}
       >
-
         <thead>
-
           <tr>
             <th>Height</th>
             <th>Weight</th>
@@ -199,32 +178,21 @@ function Reports() {
             <th>Blood Sugar</th>
             <th>Temperature</th>
           </tr>
-
         </thead>
 
-
         <tbody>
-
           {healthData.map((health) => (
-
             <tr key={health._id}>
-
               <td>{health.height} cm</td>
               <td>{health.weight} kg</td>
               <td>{health.bloodPressure}</td>
               <td>{health.heartRate}</td>
               <td>{health.bloodSugar}</td>
               <td>{health.temperature}</td>
-
             </tr>
-
           ))}
-
         </tbody>
-
-
       </table>
-
 
     </div>
   );

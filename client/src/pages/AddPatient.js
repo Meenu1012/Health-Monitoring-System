@@ -18,7 +18,7 @@ function AddPatient() {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/patients/add", {
+      const response = await fetch("https://health-monitoring-system-0vmd.onrender.com/api/patients/add",  {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
