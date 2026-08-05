@@ -1,26 +1,82 @@
-const registerUser = () => {
-  console.log("API URL:", process.env.REACT_APP_API_URL);
+import React, { useState } from "react";
 
-  fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      alert(data.message);
+function Register() {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-      setUser({
-        name: "",
-        email: "",
-        password: "",
-      });
-    })
-    .catch((err) => {
-      console.error("Error:", err);
-      alert("Registration failed");
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
     });
-};
+  };
+
+  const registerUser = () => {
+    console.log("API URL:", process.env.REACT_APP_API_URL);
+
+    fetch(`${process.env.REACT_APP_API_URL}/api/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert(data.message);
+
+        setUser({
+          name: "",
+          email: "",
+          password: "",
+        });
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Registration failed");
+      });
+  };
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Register</h1>
+
+      <input
+        type="text"
+        name="name"
+        placeholder="Enter Name"
+        value={user.name}
+        onChange={handleChange}
+      />
+      <br /><br />
+
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+        value={user.email}
+        onChange={handleChange}
+      />
+      <br /><br />
+
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter Password"
+        value={user.password}
+        onChange={handleChange}
+      />
+      <br /><br />
+
+      <button onClick={registerUser}>
+        Register
+      </button>
+    </div>
+  );
+}
+
+export default Register;
