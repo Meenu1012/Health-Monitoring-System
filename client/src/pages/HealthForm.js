@@ -18,7 +18,7 @@ function HealthForm() {
   };
 
   const saveHealthData = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/...`)
+    fetch(`${process.env.REACT_APP_API_URL}/api/health`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,10 @@ function HealthForm() {
           temperature: "",
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        alert("Error saving health data");
+      });
   };
 
   return (
