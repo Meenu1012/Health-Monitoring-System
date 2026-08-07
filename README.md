@@ -1,27 +1,19 @@
 # 🏥 Health Monitoring System
 
-A full-stack **Health Monitoring System** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. This application allows users to register, log in, manage patient information, and store health records through a simple web interface.
-
----
-
-## 🌐 Live Demo
-
-**Frontend (Vercel):**  
-https://health-monitoring-system-rho.vercel.app
-
-**Backend (Render):**  
-https://health-monitoring-system-0vmd.onrender.com
+A full-stack Health Monitoring System built using the MERN Stack (MongoDB, Express.js, React.js, Node.js). This application allows users to register, log in, manage patient records, record health data, generate reports, and visualize health statistics.
 
 ---
 
 ## 🚀 Features
 
-- ✅ User Registration
-- ✅ User Login
-- ✅ Add Patient Details
-- ✅ Health Data Entry
-- ✅ Store Health Records in MongoDB
-- ✅ Responsive Web Interface
+- 👤 User Registration and Login
+- ➕ Add Patient Details
+- ✏️ Update Patient Information
+- ❌ Delete Patient Information
+- ❤️ Health Data Entry
+- 📊 Health Reports
+- 📈 Health Monitoring Charts
+- 📋 Dashboard with Health Summary
 
 ---
 
@@ -30,7 +22,10 @@ https://health-monitoring-system-0vmd.onrender.com
 ### Frontend
 - React.js
 - React Router
+- Recharts
+- HTML
 - CSS
+- JavaScript
 
 ### Backend
 - Node.js
@@ -39,10 +34,6 @@ https://health-monitoring-system-0vmd.onrender.com
 ### Database
 - MongoDB Atlas
 
-### Deployment
-- Vercel (Frontend)
-- Render (Backend)
-
 ---
 
 ## 📂 Project Structure
@@ -50,9 +41,9 @@ https://health-monitoring-system-0vmd.onrender.com
 ```
 Health-Monitoring-System/
 │
-├── client/              # React Frontend
-├── server/              # Node.js & Express Backend
-├── screenshots/         # Project Screenshots
+├── client/          # React Frontend
+├── server/          # Node.js & Express Backend
+├── screenshots/     # Project Screenshots
 ├── README.md
 ├── package.json
 └── server.js
@@ -63,43 +54,67 @@ Health-Monitoring-System/
 ## 📸 Project Screenshots
 
 ### 🏠 Home Page
-![Home](screenshots/home.png)
+
+![Home](./screenshots/Home.png)
 
 ### 📝 User Registration
-![Register](screenshots/register.png)
 
-### 🔑 User Login
-![Login](screenshots/login.png)
+![Register](./screenshots/register.png)
+
+### 🔐 User Login
+
+![Login](./screenshots/login.png)
 
 ### 👤 Add Patient
-![Add Patient](screenshots/add-patient.png)
+
+![Add Patient](./screenshots/patient-details.png)
 
 ### ❤️ Health Data Entry
-![Health Form](screenshots/health-form.png)
+
+![Health Form](./screenshots/health-form.png)
+
+### 📊 Health Report
+
+![Health Report](./screenshots/health-report.png)
+
+### 📈 Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### 📉 Health Chart
+
+![Health Chart](./screenshots/health-chart.png)
 
 ---
 
 ## ⚙️ Installation
 
-1. Clone the repository:
+### Clone the repository
 
 ```bash
 git clone https://github.com/Meenu1012/Health-Monitoring-System.git
 ```
 
-2. Install dependencies:
+### Install backend dependencies
 
 ```bash
 npm install
 ```
 
-3. Start the backend:
+### Install frontend dependencies
+
+```bash
+cd client
+npm install
+```
+
+### Start Backend
 
 ```bash
 npm start
 ```
 
-4. Start the frontend:
+### Start Frontend
 
 ```bash
 cd client
@@ -108,25 +123,35 @@ npm start
 
 ---
 
-## 🚀 Future Enhancements
+## 🌐 Live Demo
 
-- Edit Patient Information
-- Delete Patient Information
-- Health Reports
-- Health Monitoring Charts
-- Dashboard with Health Summary
-- Appointment Scheduling
-- Email Notifications
+**Frontend (Vercel):**
+
+https://health-monitoring-system-h0.vercel.app/
+
+**Backend API (Render):**
+
+https://health-monitoring-system-0vmd.onrender.com/
 
 ---
 
-## 👩‍💻 Author
+## 🚀 Future Enhancements
+
+- Email Notifications
+- Doctor Dashboard
+- Appointment Booking
+- BMI Calculator
+- PDF Report Download
+- Mobile Responsive UI
+
+---
+
+## 👩‍💻 Developer
 
 **Meenakshi**
 
-GitHub:  
-https://github.com/Meenu1012
+GitHub: https://github.com/Meenu1012
 
 ---
 
-⭐ If you found this project useful, consider giving it a star on GitHub!
+⭐ If you like this project, don't forget to give it a star on GitHub!
