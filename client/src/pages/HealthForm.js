@@ -18,14 +18,19 @@ function HealthForm() {
   };
 
   const saveHealthData = () => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/health`, {
+    fetch(`${process.env.REACT_APP_API_URL}/api/health/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(health),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to save health data");
+        }
+        return res.json();
+      })
       .then((data) => {
         alert(data.message);
 
@@ -46,7 +51,7 @@ function HealthForm() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Health Monitoring</h1>
+      <h2>Health Monitoring</h2>
 
       <input
         type="number"
@@ -55,7 +60,8 @@ function HealthForm() {
         value={health.height}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="number"
@@ -64,7 +70,8 @@ function HealthForm() {
         value={health.weight}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="text"
@@ -73,7 +80,8 @@ function HealthForm() {
         value={health.bloodPressure}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="number"
@@ -82,7 +90,8 @@ function HealthForm() {
         value={health.heartRate}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="number"
@@ -91,7 +100,8 @@ function HealthForm() {
         value={health.bloodSugar}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <input
         type="number"
@@ -100,7 +110,8 @@ function HealthForm() {
         value={health.temperature}
         onChange={handleChange}
       />
-      <br /><br />
+      <br />
+      <br />
 
       <button onClick={saveHealthData}>
         Save Health Data
