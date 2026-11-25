@@ -4,34 +4,37 @@ const cors = require("cors");
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
 // Import Routes
-const patientRoutes = require("./routes/patientRoutes");
-const userRoutes = require("./routes/userRoutes");
-const healthRoutes = require("./routes/healthRoutes");
+const patientRoutes = require("./server/routes/patientRoutes");
+const userRoutes = require("./server/routes/userRoutes");
+const healthRoutes = require("./server/routes/healthRoutes");
 
 // Use Routes
 app.use("/api/patients", patientRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/health", healthRoutes);
 
-// MongoDB Connection
-mongoose
-  .connect("mongodb://127.0.0.1:27017/healthmonitor")
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
-
 // Test Route
 app.get("/", (req, res) => {
   res.send("Health Monitoring System Backend Running");
 });
 
-// Start Server
-const PORT = 5000;
+// Start Server after MongoDB connection
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("MongoDB Connected");
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("MongoDB connection failed:", err.message);
+    process.exit(1);
+  });
